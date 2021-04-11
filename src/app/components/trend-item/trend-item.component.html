@@ -1,0 +1,17 @@
+<div class="trend-item">
+    <header class="trend-header">
+        <app-text color="grey" size="sm">
+            {{trend.category}}
+        </app-text>
+
+        <fa-icon class="trend-header-icon" [icon]="faChevronDown"></fa-icon>
+    </header>
+
+    <div class="trend-content">
+        <app-text weight="bold">#{{trend.hashtag}}</app-text>
+    </div>
+
+    <footer class="trend-footer">
+        <app-text color="grey">{{trend.tweetCount}}k tweets</app-text>
+    </footer>
+</div>

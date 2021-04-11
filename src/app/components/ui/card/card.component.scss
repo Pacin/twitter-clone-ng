@@ -1,0 +1,20 @@
+@import 'src/assets/styles/_theme.scss';
+
+.card {
+    background-color: transparent;
+    overflow: hidden;
+}
+
+.basic {
+    border: 1px solid $line;
+}
+
+:host:not(:first-of-type) .basic {
+        border-top-color: transparent;
+}
+
+.rounded {
+    background-color: $card;
+    border-radius: $card-radius;
+    margin: $lg-space 0;
+}
