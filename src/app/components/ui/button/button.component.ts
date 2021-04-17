@@ -9,6 +9,7 @@ export class ButtonComponent implements OnInit {
   @Input() variant: string = 'primary';
   @Input() size: string = 'md';
   @Input() block: boolean = false;
+  @Input() icon: boolean = false;
 
   get dynamicClasses() {
     return `${this.size} ${this.variant}`;

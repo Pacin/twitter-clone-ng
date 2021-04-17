@@ -6,6 +6,7 @@ $input: #283340;
 $card: #1C2733;
 $line: #3A444C;
 $white: #fff;
+$overlay:#5b7083;
 
 // spacings
 $xs-space: 4px;
@@ -13,7 +14,7 @@ $sm-space: 8px;
 $md-space: 12px;
 $lg-space: 16px;
 $xl-space: 32px;
-$xxl-space: 40px;
+$xxl-space: 42px;
 
 //font-sizes
 $sm-font: 13px;
@@ -36,3 +37,14 @@ $transition: all 100ms ease-in-out;
 $sm-img: 18px;
 $md-img: 50px;
 $lg-img: 135px;
+
+// Z-index
+$z-0:0;
+$z-1:1;
+$z-2:2;
+$z-3:3;
+
+$z-9:9;
+$z-99:99;
+$z-999:999;
+$z-9999:9999;

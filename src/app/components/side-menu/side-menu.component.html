@@ -25,6 +25,19 @@
 <app-nav-link [icon]="faEllipsisH" to="/home/1">
     More
 </app-nav-link>
-<app-button [block]="true">
+<app-button [block]="true" (click)="toggleTweetModal()">
     Tweet
 </app-button>
+
+<app-modal [isOpen]="isTweetModalOpen">
+<header class="modal-header">
+    <app-button (click)="toggleTweetModal()" variant="flat" [icon]="true">
+        <fa-icon [icon]="faTimes"></fa-icon>
+    </app-button>
+    <app-divider></app-divider>
+
+    <div class="modal-content">
+       <app-tweet-input></app-tweet-input>
+    </div>
+</header>
+</app-modal>

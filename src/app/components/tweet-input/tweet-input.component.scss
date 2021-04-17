@@ -1,0 +1,29 @@
+@import 'src/assets/styles/_theme.scss';
+
+.tweet-input {
+    display: flex;
+}
+
+.main-content {
+    flex:1;
+    margin-left: $md-space;
+
+    .text-actions {
+        margin-bottom: $md-space;
+    }
+
+    .button-icon {
+        margin-right: $sm-space;
+    }
+
+    .modal-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: $md-space;
+
+        .secondary-actions {
+            display: flex;
+        }
+    }
+}

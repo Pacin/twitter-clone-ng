@@ -16,15 +16,17 @@
     }
 }
 
+
 .profile-card-header {
     display: flex;
     justify-content: flex-end;
-    padding: $md-space $lg-space 0 $lg-space;
+    padding: $md-space $lg-space;
 }
 
 .profile-title {
     padding: 0 $lg-space $sm-space $lg-space;
 }
+
 
 .profile-bio {
     padding: 0 $lg-space;
@@ -41,10 +43,6 @@
     margin-right: $xl-space;
     display: flex;
     align-items: center;
-
-    &-icon {
-        padding-right: $sm-space;
-    }
 }
 
 .profile-statistics {
@@ -61,13 +59,49 @@
 }
 
 .stats-item {
- 
+
     &-count {
         padding-right: $xs-space;
     }
+    &-title {
+        margin-left: $xs-space;
+    }
 }
 
+.profile-img {
+    position: absolute;
+    top: 0;
+    left: $lg-space;
+    transform: translateY(-50%);
 
+}
 
+.profile-followers {
+    display: flex;
+    align-items: center;
+    padding: $sm-space $lg-space ;
+    text-decoration: none;
+    color: $grey;
 
+    &:hover {
+        text-decoration: underline;
+    }
 
+    .followers-images-wrapper {
+        display: flex;
+
+        .follower-image:not(:first-child) {
+            position: relative;
+
+        }
+    }
+
+    .followers-text-wrapper {
+        margin-left: -$md-space;
+    }
+}
+
+.tabs-wrapper {
+    margin-top: $xl-space;
+    display: block;
+}

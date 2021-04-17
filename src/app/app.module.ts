@@ -20,6 +20,10 @@ import { ListItemComponent } from './components/list-item/list-item.component';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { TrendItemComponent } from './components/trend-item/trend-item.component';
 import { TweetCardComponent } from './components/tweet-card/tweet-card.component';
+import { TabsComponent } from './components/tabs/tabs.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { TextAreaComponent } from './components/ui/text-area/text-area.component';
+import { TweetInputComponent } from './components/tweet-input/tweet-input.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +43,11 @@ import { TweetCardComponent } from './components/tweet-card/tweet-card.component
     ListItemComponent,
     SideMenuComponent,
     TrendItemComponent,
-    TweetCardComponent
+    TweetCardComponent,
+    TabsComponent,
+    ModalComponent,
+    TextAreaComponent,
+    TweetInputComponent
   ],
   imports: [
     BrowserModule,

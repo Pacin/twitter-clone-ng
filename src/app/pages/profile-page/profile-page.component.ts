@@ -43,10 +43,29 @@ export class ProfilePageComponent implements OnInit {
         imgUrl: 'https://unsplash.it/50/52'
       }
     },
-  ]
+  ];
+
+  followerImages: any[] = [
+    'https://unsplash.it/18/18',
+    'https://unsplash.it/18/19',
+    'https://unsplash.it/19/18'
+  ];
+
+  profileTabs: any[] = [
+    {title: 'Tweets', value: 't'},
+    {title: 'Tweets & Replies', value: 't-r'},
+    {title: 'Media', value: 'm'},
+    {title: 'Likes', value: 'l'}
+  ];
+
+  selectedProfileTab:string = 't';
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  setProfileTab(selectedTabValue) {
+    this.selectedProfileTab = selectedTabValue;
+  }
 }

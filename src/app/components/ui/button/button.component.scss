@@ -8,6 +8,9 @@
     outline: none;
     transition: $transition;
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .sm {
@@ -39,11 +42,25 @@
     color: $blue;
 
     &:hover {
-        background-color: rgba($blue, $alpha: 0.1);
+        background-color: rgba($blue, 0.1);
     }
 }
 
 .block {
     display: block;
     width: 100%;
+}
+
+.flat {
+    background-color: transparent;
+    color:$blue;
+
+    &:hover {
+        background-color: rgba($blue, 0.1);
+    }
+}
+
+.icon {
+    width: $xxl-space;
+    height: $xxl-space;
 }
