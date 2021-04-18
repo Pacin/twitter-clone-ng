@@ -10,6 +10,7 @@ export class ButtonComponent implements OnInit {
   @Input() size: string = 'md';
   @Input() block: boolean = false;
   @Input() icon: boolean = false;
+  @Input() isLoading: boolean = false;
 
   get dynamicClasses() {
     return `${this.size} ${this.variant}`;

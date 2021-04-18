@@ -1,0 +1,28 @@
+<div class="login-form-wrapper">
+    <form [formGroup]="loginForm" (submit)="login()">
+     <header class="login-header">
+         <fa-icon class="login-logo" [icon]="faTwitter"></fa-icon>
+     </header>
+
+    <div class="login-content">
+     <app-text class="login-title" weight="bold" size="lg">Log in to your account</app-text>
+
+     <app-input
+        formControlName="identifier"
+         name="identifier"
+         label="Email or username"></app-input>
+
+     <app-input
+        formControlName="password"
+         type="password"
+         name="password"
+         label="Password"></app-input>
+
+         <app-button 
+         class="login-btn" 
+         type="submit"
+         [isLoading]="isLoading">Log In</app-button>
+    </div>
+    
+    </form>
+ </div>

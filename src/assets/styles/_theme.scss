@@ -17,10 +17,13 @@ $xl-space: 32px;
 $xxl-space: 42px;
 
 //font-sizes
+$xs-font:11px;
 $sm-font: 13px;
 $md-font: 15px;
 $lg-font: 20px;
 $xl-font: 32px;
+$xxl-font: 42px;
+$xxxl-font: 62px;
 
 //font-weights
 $normal: 400;
@@ -29,6 +32,7 @@ $bold: 700;
 //Radius
 $btn-radius:25px;
 $card-radius: 14px;
+$input-radius: 4px;
 
 //Transition
 $transition: all 100ms ease-in-out;

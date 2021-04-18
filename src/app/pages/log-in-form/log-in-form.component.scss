@@ -1,0 +1,30 @@
+@import 'src/assets/styles/_theme.scss';
+
+.login-form-wrapper {
+    padding: $sm-space $lg-space;
+
+    .login-header {
+        display: flex;
+        justify-content: center;
+
+        .login-logo {
+            font-size: $xl-font;
+        }
+    }
+
+    .login-content {
+        padding: 0 $lg-space;
+        margin-bottom: $lg-space;
+        
+}
+
+    .login-title {
+        margin: $xl-space 0 $lg-space 0;
+        display: block;
+    }
+
+    .login-btn{
+        display: block;
+        margin:$md-space 0 ;
+    }
+}

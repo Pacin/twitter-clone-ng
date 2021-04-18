@@ -24,6 +24,10 @@ import { TabsComponent } from './components/tabs/tabs.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { TextAreaComponent } from './components/ui/text-area/text-area.component';
 import { TweetInputComponent } from './components/tweet-input/tweet-input.component';
+import { SignUpFormComponent } from './pages/sign-up-form/sign-up-form.component';
+import { LogInFormComponent } from './pages/log-in-form/log-in-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -47,12 +51,16 @@ import { TweetInputComponent } from './components/tweet-input/tweet-input.compon
     TabsComponent,
     ModalComponent,
     TextAreaComponent,
-    TweetInputComponent
+    TweetInputComponent,
+    SignUpFormComponent,
+    LogInFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
