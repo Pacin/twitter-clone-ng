@@ -39,12 +39,24 @@
         margin-top: $lg-space;
 
         .action-wrapper {
+            display: flex;
+            align-items: center;
             flex: 1;
 
             .action-icon {
                 color: $grey;
-
+                margin-right: $sm-space;
             }
         }
     }
 }
+
+.modal-header {
+    padding:$md-space $lg-space;
+}
+
+.modal-content {
+    padding:$md-space $lg-space 0 0;
+    display: flex;
+}
+

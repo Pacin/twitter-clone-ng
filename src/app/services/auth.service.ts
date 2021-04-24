@@ -6,7 +6,7 @@ import {environment as env} from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
-  user:any = null;
+  user:any = {};
   jwt: string = null;
 
   constructor(

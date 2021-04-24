@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {faHome, faHashtag, faEllipsisH, faSearch} from '@fortawesome/free-solid-svg-icons';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-home-page',
@@ -7,6 +8,7 @@ import {faHome, faHashtag, faEllipsisH, faSearch} from '@fortawesome/free-solid-
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
+  searchText = new FormControl('');
   faHashtag = faHashtag;
   faSearch = faSearch;
   adImages: any[] = [

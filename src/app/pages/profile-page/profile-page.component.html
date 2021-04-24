@@ -9,11 +9,11 @@
         <div class="header-title">
 
             <app-text weight="bold" size="lg">
-                Name
+                {{user.username}}
             </app-text>
 
             <app-text color="grey" size="sm">
-                1235 Tweets
+                {{tweets.length}} Tweets
             </app-text>
 
         </div>
@@ -32,17 +32,22 @@
         <app-img size="lg" class="profile-img" src="https://unsplash.it/135/135" [border]="true">
             
         </app-img>
+
+        <app-button variant="outline" *ngIf="isMyProfile; else toggleFollowBtn">Edit Profile</app-button>
+        
+    <ng-template #toggleFollowBtn>
         <app-button>
             Following
         </app-button>
+    </ng-template>
     </header>
     
     <div class="profile-title">
         <app-text weight="bold" size="lg">
-            Name
+            {{user.username}}
         </app-text>
         <app-text color="grey">
-            @username
+            {{user.email}}
         </app-text>
     </div>
 
@@ -125,3 +130,4 @@
 <app-tweet-card
     *ngFor="let tweet of tweets"
     [tweet]="tweet"></app-tweet-card>
+

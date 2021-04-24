@@ -1,6 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import {faArrowLeft, faMapMarkerAlt} from '@fortawesome/free-solid-svg-icons';
-
+import { AuthService } from 'src/app/services/auth.service';
+import {environment as env} from 'src/environments/environment';
+ 
 @Component({
   selector: 'app-profile-page',
   templateUrl: './profile-page.component.html',
@@ -9,41 +13,8 @@ import {faArrowLeft, faMapMarkerAlt} from '@fortawesome/free-solid-svg-icons';
 export class ProfilePageComponent implements OnInit {
   faArrowLeft = faArrowLeft;
   faMapMarkerAlt =faMapMarkerAlt;
-  tweets: any[] = [
-    {
-      id:1, 
-      text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid repudiandae eius consectetur mollitia sed impedit, voluptatem harum debitis amet ullam adipisci soluta nesciunt, optio temporibus incidunt? Obcaecati laboriosam doloremque iur.',
-      created_at: '18h',
-      user: {
-        id:1,
-        name: 'Jake',
-        username: '@jakeuser',
-        imgUrl: 'https://unsplash.it/51/50'
-      }
-    },
-    {
-      id:2, 
-      text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid repudiandae eius consectetur mollitia sed impedit, voluptatem harum debitis amet ullam adipisci soluta nesciunt, optio temporibus incidunt? Obcaecati laboriosam doloremque iur.',
-      created_at: '15h',
-      user: {
-        id:2,
-        name: 'Jane',
-        username: '@janeuser',
-        imgUrl: 'https://unsplash.it/50/51'
-      }
-    },
-    {
-      id:3, 
-      text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid repudiandae eius consectetur mollitia sed impedit, voluptatem harum debitis amet ullam adipisci soluta nesciunt, optio temporibus incidunt? Obcaecati laboriosam doloremque iur.',
-      created_at: '12h',
-      user: {
-        id:3,
-        name: 'Bob',
-        username: '@bobuser',
-        imgUrl: 'https://unsplash.it/50/52'
-      }
-    },
-  ];
+  user:any = {};
+  tweets: any[] = [];
 
   followerImages: any[] = [
     'https://unsplash.it/18/18',
@@ -60,12 +31,34 @@ export class ProfilePageComponent implements OnInit {
 
   selectedProfileTab:string = 't';
 
-  constructor() { }
+  get isMyProfile() {
+    return this.user.id === this.authService.user.id;
+  }
+
+  constructor(
+    private http: HttpClient,
+    private route: ActivatedRoute,
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe(param => {
+      this.fetchProfile(param.userId);
+      this.fetchProfileTweets(param.userId);
+    })
   }
 
   setProfileTab(selectedTabValue) {
     this.selectedProfileTab = selectedTabValue;
   }
+
+  fetchProfile(id:string) {
+    this.http.get(`${env.baseURL}/users/${id}`)
+      .subscribe((data: any) => this.user = data);
+  }
+
+  fetchProfileTweets(id:string) {
+    this.http.get(`${env.baseURL}/tweets?user=${id}&&_sort=created_at:desc`)
+      .subscribe((data:any) => this.tweets = data);
+}
 }

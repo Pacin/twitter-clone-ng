@@ -28,6 +28,7 @@ import { SignUpFormComponent } from './pages/sign-up-form/sign-up-form.component
 import { LogInFormComponent } from './pages/log-in-form/log-in-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { TweetDetailsPageComponent } from './pages/tweet-details-page/tweet-details-page.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import {HttpClientModule} from '@angular/common/http';
     TextAreaComponent,
     TweetInputComponent,
     SignUpFormComponent,
-    LogInFormComponent
+    LogInFormComponent,
+    TweetDetailsPageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,28 @@
+@import 'src/assets/styles/_theme.scss';
+
+.tweet-header {
+    display: flex;
+    align-items: center;
+    padding:$md-space $lg-space;
+
+    .back-btn {
+        color: $blue;
+        font-size: $md-font;
+        padding-right: $md-space;
+    }
+
+    .header-title {
+        margin-left: $md-space;
+    }
+}
+
+
+.profile-card-header {
+    display: flex;
+    justify-content: flex-end;
+    padding: $md-space $lg-space;
+}
+
+.profile-title {
+    padding: 0 $lg-space $sm-space $lg-space;
+}
