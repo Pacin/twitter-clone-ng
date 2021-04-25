@@ -43,7 +43,14 @@
                             </app-button>
                         </div>
                         <div class="action-wrapper">
-                            <fa-icon class="action-icon" [icon]="faHeart"></fa-icon>
+                            <app-button 
+                            class="action-icon" 
+                            variant="flat"
+                            [icon]="true"
+                            (click)="likeTweet($event); false">
+                                <fa-icon class="action-icon" [icon]="faHeart"></fa-icon>
+                                <app-text color="grey" size="sm">{{likeCount}}</app-text>
+                            </app-button>
                         </div>
                         <div class="action-wrapper">
                             <fa-icon class="action-icon" [icon]="faHeart"></fa-icon>

@@ -50,4 +50,28 @@ export class TweetService {
       }
     })
   }
+
+  likeTweet(tweetId:number) {
+    const {user, jwt} = this.authService;
+    const newLike = {
+      user: user.id,
+      tweet: tweetId
+    }
+
+    return this.http.post(`${env.baseURL}/likes`, newLike, {
+      headers:{
+        'Authorization': `Bearer ${jwt}`
+      }
+    }).subscribe (data => this.fetchTweets());
+  }
+
+  disLikeTweet(likeId:number) {
+    const {jwt} = this.authService;
+
+    this.http.delete(`${env.baseURL}/likes/${likeId}`, {
+      headers: {
+        'Authorization': `Bearer ${jwt}`
+      }
+    }).subscribe(data => this.fetchTweets());
+  }
 }

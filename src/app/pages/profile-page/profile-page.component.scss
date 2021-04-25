@@ -43,6 +43,15 @@
     margin-right: $xl-space;
     display: flex;
     align-items: center;
+    color:$white;
+
+ &-icon{
+     padding-right: $sm-space;
+ }
+}
+
+a.info-item:hover {
+    text-decoration: underline;
 }
 
 .profile-statistics {

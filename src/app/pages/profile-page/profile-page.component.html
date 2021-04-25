@@ -9,7 +9,7 @@
         <div class="header-title">
 
             <app-text weight="bold" size="lg">
-                {{user.username}}
+                {{user.username | username}}
             </app-text>
 
             <app-text color="grey" size="sm">
@@ -33,11 +33,11 @@
             
         </app-img>
 
-        <app-button variant="outline" *ngIf="isMyProfile; else toggleFollowBtn">Edit Profile</app-button>
+        <app-button variant="outline" *ngIf="isMyProfile; else toggleFollowBtn" (click)="openEditModal()">Edit Profile</app-button>
         
     <ng-template #toggleFollowBtn>
-        <app-button>
-            Following
+        <app-button [variant]="isFollowing  ? 'primary' : 'outline'">
+            {{isFollowing ? 'Following': 'Follow'}}
         </app-button>
     </ng-template>
     </header>
@@ -53,27 +53,27 @@
 
     <div class="profile-bio">
         <app-text>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            {{user.bio ? user.bio : 'I am a new account'}}
         </app-text>
     </div>
     
     <div class="profile-info">
-        <div class="info-item">
+        <div class="info-item" *ngIf="user.location">
             <fa-icon [icon]="faMapMarkerAlt" size="sm"></fa-icon>
             <app-text class="stats-item-title" color="grey" size="sm">
-                City, Country
+                {{user.location}}
             </app-text>
         </div>
-        <div class="info-item">
-            <fa-icon  [icon]="faMapMarkerAlt" size="sm"></fa-icon>
+        <a [href]="user.link" target="_blank" rel="noreferrer" class="info-item" *ngIf="user.link">
+            <fa-icon  [icon]="faLink" size="sm"></fa-icon>
             <app-text class="stats-item-title" color="grey" size="sm">
-                City, Country
+                {{user.link.split('//')[1]}}
             </app-text>
-        </div>
+        </a>
         <div class="info-item">
-            <fa-icon  [icon]="faMapMarkerAlt" size="sm"></fa-icon>
+            <fa-icon  [icon]="faCalenderAlt" size="sm"></fa-icon>
             <app-text class="stats-item-title" color="grey" size="sm">
-                City, Country
+                Joined {{user.created_at | date}}
             </app-text>
         </div>
     </div>
@@ -129,5 +129,13 @@
 
 <app-tweet-card
     *ngFor="let tweet of tweets"
-    [tweet]="tweet"></app-tweet-card>
+    [tweet]="tweet">
+</app-tweet-card>
 
+
+<app-modal [isOpen]="isEditModalOpen">
+    <app-edit-form
+    *ngIf="userData && userData.id"
+    (onCancel)="closeEditModal()"
+    (onSuccess)="onSuccessfulEdit()"></app-edit-form>
+</app-modal>

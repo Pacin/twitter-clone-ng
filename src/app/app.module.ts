@@ -29,6 +29,11 @@ import { LogInFormComponent } from './pages/log-in-form/log-in-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { TweetDetailsPageComponent } from './pages/tweet-details-page/tweet-details-page.component';
+import { EditFormComponent } from './components/edit-form/edit-form.component';
+import { DropdownLinkComponent } from './components/ui/dropdown-link/dropdown-link.component';
+import { AuthGuard } from './guards/auth.guard';
+import { PublicGuard } from './guards/public.guard';
+import { UsernamePipe } from './pipes/username.pipe';
 
 @NgModule({
   declarations: [
@@ -55,7 +60,10 @@ import { TweetDetailsPageComponent } from './pages/tweet-details-page/tweet-deta
     TweetInputComponent,
     SignUpFormComponent,
     LogInFormComponent,
-    TweetDetailsPageComponent
+    TweetDetailsPageComponent,
+    EditFormComponent,
+    DropdownLinkComponent,
+    UsernamePipe
   ],
   imports: [
     BrowserModule,
@@ -64,7 +72,7 @@ import { TweetDetailsPageComponent } from './pages/tweet-details-page/tweet-deta
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [AuthGuard, PublicGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

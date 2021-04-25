@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {faTwitter} from '@fortawesome/free-brands-svg-icons';
 import {faBell, faEnvelope, faBookmark, faListAlt, faUser} from '@fortawesome/free-regular-svg-icons';
-import {faHome, faHashtag, faEllipsisH, faTimes,} from '@fortawesome/free-solid-svg-icons';
+import {faHome, faHashtag, faEllipsisH, faTimes, faSignOutAlt,} from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -20,6 +21,10 @@ export class SideMenuComponent implements OnInit {
   faEllipsisH = faEllipsisH;
   faTwitter = faTwitter;
   faTimes = faTimes;
+  faSignOut = faSignOutAlt;
+  moreMenuItems: any[] = [
+    {text: 'Logout', callback: () => this.logout(), icon: faSignOutAlt}
+  ]
 
   isTweetModalOpen: boolean = false;
 
@@ -28,7 +33,8 @@ export class SideMenuComponent implements OnInit {
   }
   
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -38,4 +44,8 @@ export class SideMenuComponent implements OnInit {
     this.isTweetModalOpen = !this.isTweetModalOpen;
   }
 
+  logout() {
+    this.authService.logout();
+    this.router.navigateByUrl('/');
+  }
 }

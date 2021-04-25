@@ -13,6 +13,10 @@ export class AuthService {
     private http: HttpClient
   ) { }
 
+  hasJwt() {
+    return !!window.localStorage.getItem('jwt');
+  }
+
     setJwt(jwt:string) {
       window.localStorage.setItem('jwt', jwt);
       this.jwt = jwt;
