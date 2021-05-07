@@ -1,7 +1,5 @@
 <div class="landing-page">
-
     <div class="landing-wrapper">
-        
         <div class="landing-image">
             <fa-icon class="landing-icon" [icon]="faTwitter"></fa-icon>
         </div>
@@ -13,47 +11,45 @@
 
             <div class="content-titles">
                 <app-text size="xxxl" weight="bold">
-                    Happening now
+                    Happening Now
                 </app-text>
+
                 <app-text class="subtitle" size="xl" weight="bold">
                     Join Twitter today.
                 </app-text>
-                
-                <div class="content-actions">
 
-                    <app-button
-                        (click)="openSignupModal()" 
-                        size="lg" 
-                        [block]="true">
-                        Sign Up
+                <div class="content-actions">
+                    <app-button 
+                        [block]="true"
+                        size="lg"
+                        (click)="openSignupModal()">
+                        Sign up
                     </app-button>
 
                     <app-button 
-                    (click)="openLoginModal()" 
-                    class="login-btn" 
-                    size="lg" 
-                    [block]="true" 
-                    variant="outline">
-                    Log in
-                </app-button>
-
+                        class="login-btn"
+                        variant="outline" 
+                        [block]="true"
+                        size="lg"
+                        (click)="openLoginModal()">
+                        Log in
+                    </app-button>
                 </div>
-
             </div>
         </div>
     </div>
-    
+
     <footer class="landing-footer">
         <app-text color="grey">
-            © 2021 Twitter, Inc.
+            @2021 Twitter, Inc.
         </app-text>
     </footer>
 </div>
 
 <app-modal [isOpen]="isSignupModalOpen">
-<app-sign-up-form></app-sign-up-form>
+    <app-sign-up-form></app-sign-up-form>
 </app-modal>
-    
+
 <app-modal [isOpen]="isLoginModalOpen">
-        <app-log-in-form></app-log-in-form>
+    <app-log-in-form></app-log-in-form>
 </app-modal>

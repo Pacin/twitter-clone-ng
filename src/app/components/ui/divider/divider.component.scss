@@ -1,15 +1,14 @@
 @import 'src/assets/styles/_theme.scss';
 
 .divider {
-    margin:$md-space 0;
+    margin: $md-space 0;
     background-color: $line;
     height: 1px;
-
+    
     &.marginless {
-        margin:0;
+        margin: 0;
     }
 }
-
 .lg {
     height: $md-space;
     background-color: $card;

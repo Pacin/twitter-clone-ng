@@ -1,35 +1,37 @@
 <div class="signup-form-wrapper">
     <form [formGroup]="signupForm" (submit)="signup()">
-     <header class="signup-header">
-         <fa-icon class="signup-logo" [icon]="faTwitter"></fa-icon>
-     </header>
+        <header class="signup-header">
+            <fa-icon class="signup-logo" [icon]="faTwitter"></fa-icon>
+        </header>
 
-    <div class="signup-content">
-     <app-text class="signup-title" weight="bold" size="lg">Create your account</app-text>
+        <div class="signup-content">
+            <app-text class="signup-title" size="lg" weight="bold">
+                Create your account
+            </app-text>
 
-     <app-input
-        formControlName="username"
-         name="name"
-         label="Name"></app-input>
+            <app-input
+                name="name"
+                label="Name"
+                formControlName="username"></app-input>
 
-     <app-input
-        formControlName="email"
-        type="email"
-        name="email"
-        label="Email"
-         ></app-input>
+            <app-input
+                type="email"
+                name="email"
+                label="Email"
+                formControlName="email"></app-input>
 
-     <app-input
-        formControlName="password"
-         type="password"
-         name="password"
-         label="Password"></app-input>
+            <app-input
+                type="password"
+                name="password"
+                label="Password"
+                formControlName="password"></app-input>
 
-         <app-button 
-            class="signup-btn" 
-            type="submit"
-            [isLoading]="isLoading">Sign Up</app-button>
-    </div>
-    
+            <app-button 
+                class="signup-btn" 
+                type="submit"
+                [isLoading]="isLoading">
+                Sign up
+            </app-button>
+        </div>
     </form>
- </div>
+</div>

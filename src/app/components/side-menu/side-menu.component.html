@@ -25,7 +25,7 @@
     Lists
 </app-nav-link>
 
-<app-nav-link [icon]="faUser" [to]="'/home/'+ user.id">
+<app-nav-link [icon]="faUser" [to]="'/home/' + user.id">
     Profile
 </app-nav-link>
 
@@ -33,19 +33,20 @@
     More
 </app-dropdown-link>
 
-<app-button [block]="true" (click)="toggleTweetModal()">
+<app-button [block]="true" to="/home/1" (click)="toggleTweetModal()">
     Tweet
 </app-button>
 
 <app-modal [isOpen]="isTweetModalOpen">
-<header class="modal-header">
-    <app-button (click)="toggleTweetModal()" variant="flat" [icon]="true">
-        <fa-icon [icon]="faTimes"></fa-icon>
-    </app-button>
-    <app-divider></app-divider>
+    <header class="modal-header">
+        <app-button (click)="toggleTweetModal()" variant="flat" [icon]="true">
+            <fa-icon [icon]="faTimes"></fa-icon>
+        </app-button>
+    </header>
 
+    <app-divider></app-divider>
+    
     <div class="modal-content">
-       <app-tweet-input></app-tweet-input>
+        <app-tweet-input></app-tweet-input>
     </div>
-</header>
 </app-modal>

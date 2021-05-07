@@ -2,12 +2,12 @@
 
 .trend-item {
     padding: $md-space $lg-space;
-    
+
     .trend-header {
         display: flex;
         justify-content: space-between;
 
-        &-icon {
+        .down-icon {
             font-size: $sm-font;
             font-weight: $normal;
             color: $grey;

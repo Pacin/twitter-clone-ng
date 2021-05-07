@@ -1,7 +1,5 @@
 @import 'src/assets/styles/_theme.scss';
 
-
-
 .landing-page {
     min-height: 100vh;
     display: flex;
@@ -14,19 +12,19 @@
 }
 
 .landing-image {
-    background-image: url('https://abs.twimg.com/sticky/illustrations/lohp_1302x955.png');
+    background-image: url('https://abs.twimg.com/sticky/illustrations/lohp_en_1302x955.png');
     flex-basis: 55%;
     display: flex;
     justify-content: center;
     align-items: center;
 
     .landing-icon {
-        font-size: 270px;
+        font-size: 250px;
     }
 }
 
 .landing-content {
-    padding: $xl-space;
+    padding: $xxl-space;
 
     .content-header {
         margin: $xl-space 0;
@@ -35,22 +33,22 @@
             font-size: $xl-font;
         }
     }
-}
 
-.content-titles{
-    .subtitle {
-        margin: $lg-space 0;
-        display: block;
+    .content-titles {
+        .subtitle {
+            margin: $xl-space 0;
+            display: block;
+        }
     }
-}
 
-.content-actions {
-    margin: $xl-space 0;
-    max-width: 360px;
+    .content-actions {
+        margin: $xl-space 0;
+        max-width: 360px;
 
-    .login-btn {
-        margin-top:$lg-space;
-        display: block;
+        .login-btn {
+            margin-top: $lg-space;
+            display: block;
+        }
     }
 }
 
@@ -58,5 +56,3 @@
     padding: $lg-space $xl-space;
     text-align: center;
 }
-
-

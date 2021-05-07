@@ -6,9 +6,9 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./text.component.scss']
 })
 export class TextComponent implements OnInit {
-@Input() size: string = 'md';
-@Input() color: string = 'white';
-@Input() weight: string = 'normal';
+  @Input() size: string = 'md';
+  @Input() color: string = 'white';
+  @Input() weight: string = 'normal';
 
   constructor() { }
 

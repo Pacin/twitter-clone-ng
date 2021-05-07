@@ -1,18 +1,21 @@
 <div class="input-container">
     <div 
-        [class]="dynamicClasses"
         class="input-wrapper" 
+        [class]="dynamicClasses"
         [ngClass]="{focused: isFocused}">
         <fa-icon 
             *ngIf="icon" 
             class="input-icon"
             [icon]="icon"></fa-icon>
 
-        <label class="label" *ngIf="label && variant == 'normal'" [for]="name">
+        <label 
+            *ngIf="label && variant === 'normal'" 
+            [for]="name"
+            class="label">
             {{label}}
         </label>
 
-        <input
+        <input 
             class="input"
             [type]="type"
             [name]="name"

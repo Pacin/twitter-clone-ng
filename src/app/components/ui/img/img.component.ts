@@ -6,16 +6,15 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./img.component.scss']
 })
 export class ImgComponent implements OnInit {
-@Input() src: string;
-@Input() alt: string;
-@Input() size: string = 'md';
-@Input() variant: string = 'circle';
-@Input() border: boolean = false;
+  @Input() src: string;
+  @Input() alt: string;
+  @Input() variant: string = 'circle';
+  @Input() border: boolean = false;
+  @Input() size: string = 'md';
 
-get dynamicClasses() {
-  return `${this.size} ${this.variant}`; 
-}
-
+  get dynamicClasses() {
+    return `${this.size} ${this.variant}`;
+  }
 
   constructor() { }
 

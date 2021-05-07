@@ -1,10 +1,9 @@
 @import 'src/assets/styles/_theme.scss';
 
 .modal-header {
-    padding:$md-space $lg-space;
+    padding: $md-space $lg-space;
 }
-
 .modal-content {
-    padding:$md-space $lg-space 0 0;
+    padding: $md-space $lg-space;
     display: flex;
 }

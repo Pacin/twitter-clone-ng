@@ -7,18 +7,15 @@ import { AuthService } from '../services/auth.service';
   providedIn: 'root'
 })
 export class PublicGuard implements CanActivate {
-
   constructor(
     private router: Router,
-    private authService:AuthService
-  ) {}
-
-
+    private authService: AuthService
+  ){}
 
   canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if(!this.authService.hasJwt()){
+    if (!this.authService.hasJwt()) {
       return true;
-    }else {
+    } else {
       this.router.navigateByUrl('/home');
       return false;
     }

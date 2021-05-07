@@ -1,29 +1,56 @@
 @import 'src/assets/styles/_theme.scss';
 
+:host {
+    flex: 1;
+}
 .tweet-input {
     display: flex;
-}
 
-.main-content {
-    flex:1;
-    margin-left: $md-space;
+    .side-content {
 
-    .text-actions {
-        margin-bottom: $md-space;
     }
 
-    .button-icon {
-        margin-right: $sm-space;
-    }
+    .main-content {
+        flex: 1;
+        margin-left: $md-space;
 
-    .modal-actions {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: $md-space;
+        .text-actions {
+            margin-bottom: $md-space;
+        }
+        
+        .button-icon {
+            margin-right: $sm-space;
+        }
 
-        .secondary-actions {
+        .modal-actions {
             display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: $md-space;
+
+            .secondary-actions {
+                display: flex;
+
+                .file-input {
+                    display: none;
+                }
+            }
+        }
+
+        .image-preview-wrapper {
+            position: relative;
+
+            .close-btn {
+                position: absolute;
+                top: 0;
+                left: 0;
+                transform: translate(-50%, -50%);
+            }
+
+            .image-preview {
+                height: 200px;
+                overflow: auto;
+            }
         }
     }
 }

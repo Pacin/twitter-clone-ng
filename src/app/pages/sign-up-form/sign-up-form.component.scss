@@ -5,6 +5,7 @@
 
     .signup-header {
         display: flex;
+        position: relative;
         justify-content: center;
 
         .signup-logo {
@@ -14,17 +15,16 @@
 
     .signup-content {
         padding: 0 $lg-space;
-        margin-bottom: $lg-space;
-        
-}
+        margin: $lg-space 0;
+    }
 
     .signup-title {
-        margin: $xl-space 0 $lg-space 0;
+        margin: $xl-space 0 $lg-space;
         display: block;
     }
 
-    .signup-btn{
+    .signup-btn {
         display: block;
-        margin:$md-space 0 ;
+        margin: $md-space 0;
     }
 }

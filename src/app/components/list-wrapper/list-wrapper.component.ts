@@ -6,8 +6,8 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./list-wrapper.component.scss']
 })
 export class ListWrapperComponent implements OnInit {
-@Input() title:string;
-@Input() footerText:string;
+  @Input() title: string;
+  @Input() footerText: string;
 
   constructor() { }
 

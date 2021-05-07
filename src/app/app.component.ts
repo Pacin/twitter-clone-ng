@@ -11,16 +11,14 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent implements OnInit {
   title = 'twitter-fe';
-  faHashtag  = faHashtag;
+  faHashtag = faHashtag;
   faHome = faHome;
   faBell = faBell;
   faSearch = faSearch;
 
   constructor(
     private authService: AuthService
-  ) {
-
-  }
+  ) {}
 
   ngOnInit() {
     this.authService.tryLogin();

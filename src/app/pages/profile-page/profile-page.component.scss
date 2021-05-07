@@ -3,7 +3,7 @@
 .profile-header {
     display: flex;
     align-items: center;
-    padding:$md-space $lg-space;
+    padding: $md-space $lg-space;
 
     .back-btn {
         color: $blue;
@@ -15,8 +15,6 @@
         margin-left: $md-space;
     }
 }
-
-
 .profile-card-header {
     display: flex;
     justify-content: flex-end;
@@ -27,33 +25,28 @@
     padding: 0 $lg-space $sm-space $lg-space;
 }
 
-
 .profile-bio {
     padding: 0 $lg-space;
     padding: 0 $md-space $lg-space 0 $lg-space;
 }
-
 .profile-info {
     padding: $sm-space $lg-space;
     display: flex;
     justify-content: flex-start;
 }
-
 .info-item {
     margin-right: $xl-space;
     display: flex;
     align-items: center;
-    color:$white;
+    color: $white;
 
- &-icon{
-     padding-right: $sm-space;
- }
+    &-icon {
+        padding-right: $sm-space;
+    }
 }
-
 a.info-item:hover {
     text-decoration: underline;
 }
-
 .profile-statistics {
     display: flex;
     padding: $sm-space $lg-space;
@@ -66,50 +59,44 @@ a.info-item:hover {
         }
     }
 }
-
 .stats-item {
-
+    align-items: center;
+ 
     &-count {
         padding-right: $xs-space;
     }
-    &-title {
-        margin-left: $xs-space;
-    }
 }
-
+.stats-item-title {
+    margin-left: $xs-space;
+}
 .profile-img {
     position: absolute;
     top: 0;
     left: $lg-space;
     transform: translateY(-50%);
-
 }
-
 .profile-followers {
     display: flex;
     align-items: center;
-    padding: $sm-space $lg-space ;
+    padding: $sm-space $lg-space;
     text-decoration: none;
     color: $grey;
-
-    &:hover {
-        text-decoration: underline;
-    }
 
     .followers-images-wrapper {
         display: flex;
 
         .follower-image:not(:first-child) {
             position: relative;
-
         }
     }
-
     .followers-text-wrapper {
-        margin-left: -$md-space;
+        margin-left: -$xs-space;
+    }
+
+    &:hover {
+        text-decoration: underline;
     }
 }
-
 .tabs-wrapper {
     margin-top: $xl-space;
     display: block;

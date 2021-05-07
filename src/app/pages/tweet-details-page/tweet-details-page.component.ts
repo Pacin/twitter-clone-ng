@@ -14,27 +14,26 @@ export class TweetDetailsPageComponent implements OnInit {
   tweet: any = null;
   replies: any[] = [];
 
-
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient
   ) { }
 
   ngOnInit(): void {
-this.route.params.subscribe(param => {
-  this.fetchTweet(param.tweetId);
-  this.fetchReplies(param.tweetId);
-})
+    this.route.params.subscribe(param => {
+      this.fetchTweet(param.tweetId);
+      this.fetchReplies(param.tweetId);
+    })
   }
 
-  fetchTweet(tweetId:string) {
-this.http.get(`${env.baseURL}/tweets/${tweetId}`)
-.subscribe(data => this.tweet = data);
+  fetchTweet(tweetId: string) {
+    this.http.get(`${env.baseURL}/tweets/${tweetId}`)
+      .subscribe(data => this.tweet = data);
   }
 
-  fetchReplies(tweetId:string) {
+  fetchReplies(tweetId: string) {
     this.http.get(`${env.baseURL}/replies?tweet=${tweetId}&&_sort=created_at:desc`)
-      .subscribe((data:any) => this.replies = data);
+      .subscribe((data: any) => this.replies = data);
   }
 
 }

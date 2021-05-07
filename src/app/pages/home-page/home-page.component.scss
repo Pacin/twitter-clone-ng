@@ -4,9 +4,8 @@
     display: flex;
 }
 
-
 .left-menu-wrapper {
-flex-basis: 210px;
+    flex-basis: 210px;
 }
 
 .main-content-wrapper {
@@ -16,7 +15,7 @@ flex-basis: 210px;
 
 .aside-content-wrapper {
     flex-basis: 345px;
-    padding-top:$sm-space ;
+    padding-top: $sm-space;
 
     .img-grid {
         display: grid;

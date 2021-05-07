@@ -1,8 +1,6 @@
-
 import { Component, OnInit } from '@angular/core';
 import {faJediOrder} from '@fortawesome/free-brands-svg-icons';
 import { TweetService } from 'src/app/services/tweet.service';
-
 
 
 @Component({
@@ -11,15 +9,14 @@ import { TweetService } from 'src/app/services/tweet.service';
   styleUrls: ['./feed-page.component.scss']
 })
 export class FeedPageComponent implements OnInit {
-faJediOrder = faJediOrder;
-
+  faJediOrder = faJediOrder;
+  
   get tweets() {
     return this.tweetService.feed;
   }
 
   constructor(
     private tweetService: TweetService
-
   ) { }
 
   ngOnInit(): void {

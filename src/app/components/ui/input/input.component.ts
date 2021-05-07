@@ -19,7 +19,7 @@ export class InputComponent implements OnInit, ControlValueAccessor {
   @Input() variant: string = 'normal';
   @Input() label: string;
   isFocused: boolean = false;
-  value:string;
+  value: string;
   onChange: (value: string) => void;
   onTouched: () => void;
 

@@ -10,37 +10,36 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./log-in-form.component.scss']
 })
 export class LogInFormComponent implements OnInit {
-faTwitter = faTwitter;
-isLoading: boolean = false;
-
-loginForm = new FormGroup({
-  identifier: new FormControl('', [
-    Validators.required,
-    Validators.minLength(3)
-  ]),
-  password: new FormControl('',[
-    Validators.required,
-    Validators.minLength(6)
-  ])
-})
+  faTwitter = faTwitter;
+  isLoading: boolean = false;
+  loginForm = new FormGroup({
+    identifier: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3)
+    ]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(6)
+    ])
+  });
 
   constructor(
-    private authService:AuthService,
+    private authService: AuthService,
     private router: Router
   ) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   login() {
     this.isLoading = true;
+
     this.authService.login(this.loginForm.value)
-      .subscribe((data:any) => {
-        this.authService.setUser(data.user);
-        this.authService.setJwt(data.jwt); 
+      .subscribe((data: any) => {
+        this.authService.fetchMe(data.jwt);
         this.loginForm.reset();
         this.isLoading = false;
         this.router.navigateByUrl('/home');
       })
   }
+
 }

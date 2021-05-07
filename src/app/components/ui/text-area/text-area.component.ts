@@ -5,10 +5,10 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   selector: 'app-text-area',
   templateUrl: './text-area.component.html',
   styleUrls: ['./text-area.component.scss'],
-  providers:[{
-    provide:NG_VALUE_ACCESSOR,
+  providers: [{
+    provide: NG_VALUE_ACCESSOR,
     useExisting: TextAreaComponent,
-    multi:true
+    multi: true
   }]
 })
 export class TextAreaComponent implements OnInit, ControlValueAccessor {
@@ -19,22 +19,22 @@ export class TextAreaComponent implements OnInit, ControlValueAccessor {
   value: string;
   onChange: (value:string) => void;
   onTouched: () => void;
-
+  
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  writeValue(value:string){
+  writeValue(value: string) {
     this.value = value;
   }
 
-  registerOnChange(fn:any) {
+  registerOnChange(fn: any) {
     this.onChange = fn;
   }
-  
-  registerOnTouched(fn:any) {
+
+  registerOnTouched(fn: any) {
     this.onTouched = fn;
   }
 

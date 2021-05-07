@@ -1,12 +1,12 @@
 <div class="textarea-wrapper">
-    <textarea 
-    class="textarea"
-    [name]="name" 
-    [placeholder]="placeholder"
-    [cols]="cols" 
-    [rows]="rows"
-    [value]="value"
-    (input)="onChange($event.target.value)"
-    (blur)="onTouched()">
-</textarea>
+    <textarea
+        class="textarea"
+        [cols]="cols"
+        [rows]="rows"
+        [placeholder]="placeholder"
+        [name]="name"
+        [value]="value"
+        (input)="onChange($event.target.value)"
+        (blur)="onTouched()">
+    </textarea>
 </div>

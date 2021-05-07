@@ -4,58 +4,58 @@
     border: none;
     background-color: transparent;
     cursor: pointer;
-    display: flex;
     width: 100%;
+    display: flex;
     align-items: center;
     text-decoration: none;
     color: $white;
     font-size: $lg-font;
-    font-weight:$bold;
+    font-weight: $bold;
     margin: $lg-space 0;
     position: relative;
+
+    .dropdown-box {
+        padding: $sm-space $lg-space;
+        transition: $transition;
+    }
 
     .dropdown-text {
         margin-left: $lg-space;
     }
 
-    &-box {
-        padding: $sm-space $lg-space;
-        transition: $transition;
-    }
-
     &:hover {
-        color:$blue;
+        color: $blue;
 
         .dropdown-box {
-            border-radius:$btn-radius;
-            background-color: rgba($color: $blue, $alpha: 0.1);
+            background-color: rgba($blue, 0.1);
+            border-radius: $btn-radius;
         }
     }
 
-    &-menu {
+    .dropdown-menu {
         display: block;
         position: absolute;
         bottom: 100%;
         left: 0;
-        right:0;
-
+        right: 0;
         ul {
             list-style-type: none;
-            box-shadow: 0 0 4px 0 $grey;
+            box-shadow: 0 0 4px 0 $white;
             background-color: $background;
-            color:$white;
+            color: $white;
             border-radius: $input-radius;
-            
+
             li {
                 display: flex;
             }
-            a{
+
+            a {
                 display: flex;
-                flex:1;
                 padding: $lg-space $lg-space;
                 color: $white;
-                font-weight: $bold;
+                font-weight: $normal;
                 font-size: $md-font;
+                flex: 1;
                 transition: $transition;
 
                 span {

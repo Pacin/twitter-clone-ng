@@ -1,13 +1,13 @@
 @import 'src/assets/styles/_theme.scss';
 
 .btn {
-    border:1px solid transparent;
+    border: 1px solid transparent;
     border-radius: $btn-radius;
+    cursor: pointer;
     font-weight: $bold;
     font-size: $md-font;
     outline: none;
     transition: $transition;
-    cursor: pointer;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -18,10 +18,13 @@
         pointer-events: none;
     }
 }
-
+.block {
+    width: 100%;
+    display: block;
+}
 .sm {
-    font-size: $sm-font;
     padding: $xs-space $md-space;
+    font-size: $sm-font;
 }
 
 .md {
@@ -32,16 +35,14 @@
     padding: $md-space $xl-space;
 }
 
-
 .primary {
     background-color: $blue;
-    color:$white;
+    color: $white;
 
     &:hover {
         background-color: darken($blue, 5%);
     }
 }
-
 .outline {
     background-color: transparent;
     border-color: $blue;
@@ -52,20 +53,14 @@
     }
 }
 
-.block {
-    display: block;
-    width: 100%;
-}
-
 .flat {
     background-color: transparent;
-    color:$blue;
+    color: $blue;
 
     &:hover {
         background-color: rgba($blue, 0.1);
     }
 }
-
 .icon {
     width: $xxl-space;
     height: $xxl-space;

@@ -6,24 +6,24 @@
     text-decoration: none;
     color: $white;
     font-size: $lg-font;
-    font-weight:$bold;
+    font-weight: $bold;
     margin: $lg-space 0;
-    .link-text {
-        margin-left: $lg-space;
-    }
 
-    &-box {
+    .link-box {
         padding: $sm-space $lg-space;
         transition: $transition;
     }
 
+    .link-text {
+        margin-left: $lg-space;
+    }
+
     &:hover {
-        color:$blue;
+        color: $blue;
 
         .link-box {
-            border-radius:$btn-radius;
-            background-color: rgba($color: $blue, $alpha: 0.1);
+            background-color: rgba($blue, 0.1);
+            border-radius: $btn-radius;
         }
-    
     }
 }

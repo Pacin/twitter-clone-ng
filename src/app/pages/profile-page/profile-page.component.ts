@@ -1,11 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { faCalendarAlt } from '@fortawesome/free-regular-svg-icons';
-import {faArrowLeft, faLink, faMapMarkerAlt} from '@fortawesome/free-solid-svg-icons';
+import {faArrowLeft, faMapMarkerAlt, faLink, faCalendarAlt} from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/services/auth.service';
 import {environment as env} from 'src/environments/environment';
- 
+
 @Component({
   selector: 'app-profile-page',
   templateUrl: './profile-page.component.html',
@@ -13,27 +12,30 @@ import {environment as env} from 'src/environments/environment';
 })
 export class ProfilePageComponent implements OnInit {
   faArrowLeft = faArrowLeft;
-  faMapMarkerAlt =faMapMarkerAlt;
   faLink = faLink;
-  faCalenderAlt = faCalendarAlt;
+  faCalendarAlt = faCalendarAlt;
+  faMapMarkerAlt = faMapMarkerAlt;
   isEditModalOpen: boolean = false;
-  user:any = {};
+  user: any = {};
   tweets: any[] = [];
-
-  followerImages: any[] = [
-    'https://unsplash.it/18/18',
-    'https://unsplash.it/18/19',
-    'https://unsplash.it/19/18'
-  ];
-
+  followers: any[] = [];
   profileTabs: any[] = [
     {title: 'Tweets', value: 't'},
     {title: 'Tweets & Replies', value: 't-r'},
     {title: 'Media', value: 'm'},
-    {title: 'Likes', value: 'l'}
-  ];
+    {title: 'Likes', value: 'l'},
+  ]
+  selectedProfileTab: string = 't';
 
-  selectedProfileTab:string = 't';
+  get followersImages() {
+    return this.followers.map(follow => {
+      if (follow.follower.profileImg) {
+        return `${env.baseURL}${follow.follower.profileImg.formats.thumbnail.url}`;
+      }
+
+      return env.placeholderProfileImg;
+    })
+  }
 
   get isMyProfile() {
     return this.user.id === this.authService.user.id;
@@ -41,6 +43,12 @@ export class ProfilePageComponent implements OnInit {
 
   get userData() {
     return this.authService.user;
+  }
+
+  get isFollowing() {
+    if (!this.authService.user.following) return false;
+
+    return !!this.authService.findFollow(this.user.id);
   }
 
   constructor(
@@ -53,33 +61,44 @@ export class ProfilePageComponent implements OnInit {
     this.route.params.subscribe(param => {
       this.fetchProfile(param.userId);
       this.fetchProfileTweets(param.userId);
+      this.fetchProfileFollowers(param.userId);
     })
   }
 
-  setProfileTab(selectedTabValue) {
+  setProfileTab(selectedTabValue: string) {
     this.selectedProfileTab = selectedTabValue;
   }
 
-  fetchProfile(id:string) {
+  fetchProfile(id: string) {
     this.http.get(`${env.baseURL}/users/${id}`)
-      .subscribe((data: any) => this.user = data);
+      .subscribe(data => this.user = data);
   }
 
-  fetchProfileTweets(id:string) {
+  fetchProfileTweets(id: string) {
     this.http.get(`${env.baseURL}/tweets?user=${id}&&_sort=created_at:desc`)
-      .subscribe((data:any) => this.tweets = data);
-}
+      .subscribe((data: any) => this.tweets = data)
+  }
 
-openEditModal() {
-  this.isEditModalOpen = true;
-}
+  fetchProfileFollowers(id: string) {
+    this.http.get(`${env.baseURL}/followers?user=${id}`)
+      .subscribe((data: any) => this.followers = data);
+  }
 
-closeEditModal() {
-  this.isEditModalOpen = false;
-}
+  openEditModal() {
+    this.isEditModalOpen = true;
+  }
 
-onSuccessfulEdit() {
-  this.fetchProfile(this.user.id);
-  this.isEditModalOpen = false;
-}
+  closeEditModal() {
+    this.isEditModalOpen = false;
+  }
+
+  onSuccessfulEdit() {
+    this.fetchProfile(this.user.id);
+    this.isEditModalOpen = false;
+  }
+
+  toggleFollow() {
+    this.authService.toggleFollow(this.user.id);
+  }
+
 }

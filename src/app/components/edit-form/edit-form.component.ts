@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/services/auth.service';
 import {environment as env} from 'src/environments/environment';
+
 
 @Component({
   selector: 'app-edit-form',
@@ -18,7 +19,7 @@ export class EditFormComponent implements OnInit {
   editForm: FormGroup;
 
   get user() {
-   return this.authService.user || {};
+    return this.authService.user || {};
   }
 
   constructor(
@@ -27,6 +28,7 @@ export class EditFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log(this.authService.user);
     this.editForm = new FormGroup({
       bio: new FormControl(this.user.bio || ''),
       location: new FormControl(this.user.location || ''),
@@ -37,16 +39,17 @@ export class EditFormComponent implements OnInit {
   closeModal() {
     this.onCancel.emit();
   }
-  
+
   saveForm() {
     this.isLoading = true;
     const {user, jwt} = this.authService;
+
     this.http.put(`${env.baseURL}/users/${user.id}`, this.editForm.value, {
       headers: {
         'Authorization': `Bearer ${jwt}`
       }
-    }).subscribe((data:any) => {
-      this.authService.fetchMe();
+    }).subscribe(data => {
+      this.authService.fetchMe()
       this.onSuccess.emit();
       this.isLoading = false;
     })

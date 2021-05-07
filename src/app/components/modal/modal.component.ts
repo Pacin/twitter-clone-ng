@@ -6,7 +6,8 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./modal.component.scss']
 })
 export class ModalComponent implements OnInit {
-@Input() isOpen:boolean = false;
+  @Input() isOpen: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {

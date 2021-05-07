@@ -5,7 +5,6 @@
 }
 
 .normal {
-    
     background-color: transparent;
     border: 1px solid $line;
     position: relative;
@@ -14,12 +13,13 @@
     transition: $transition;
     padding-top: $sm-space;
 
+
     .label {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
         left: $md-space;
-        color:$grey;
+        color: $grey;
         font-size: $md-font;
         transition: $transition;
     }
@@ -30,25 +30,26 @@
         border: none;
         width: 100%;
         caret-color: $white;
-        color:$white;
+        color: $white;
         outline: none;
     }
 
     &.focused {
         border-color: $blue;
+
         .label {
             color: $blue;
             font-size: $xs-font;
-            top:25%;
+            top: 25%;
         }
     }
 }
 
 .rounded {
-    display: flex;
     background-color: $input;
     border-radius: $btn-radius;
     border: 1px solid transparent;
+    display: flex;
     transition: $transition;
 
     .input-icon {
@@ -56,6 +57,7 @@
         color: $grey;
         transition: $transition;
     }
+
     .input {
         flex: 1;
         border: none;
@@ -72,7 +74,7 @@
     }
 
     &.focused {
-        border-color:$blue;
+        border-color: $blue;
         background-color: $background;
 
         .input-icon {

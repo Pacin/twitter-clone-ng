@@ -3,12 +3,10 @@
 :host {
     display: flex;
 }
-
 .img-wrapper {
     overflow: hidden;
     border: 1px solid transparent;
     display: inline-flex;
-   
 
     &.square {
         height: 100%;
@@ -17,18 +15,18 @@
 
     &.circle {
         border-radius: 100%;
-    
-        .sm {
+
+        &.sm {
             width: $sm-img;
             height: $sm-img;
         }
-        
-        .md {
+    
+        &.md {
             width: $md-img;
             height: $md-img;
         }
         
-        .lg {
+        &.lg {
             width: $lg-img;
             height: $lg-img;
         }
@@ -37,12 +35,9 @@
     &.bordered {
         border-color: $background;
     }
-    
+
     .img {
         width: 100%;
         height: 100%;
     }
 }
-
-
-

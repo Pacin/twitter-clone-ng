@@ -1,8 +1,8 @@
 @import 'src/assets/styles/_theme.scss';
 
 .list-item {
-    display: flex;
     padding: $md-space $lg-space;
+    display: flex;
 
     .list-img-wrapper {
         flex-basis: 50px;

@@ -1,47 +1,51 @@
 <app-card>
-
     <header class="profile-header">
-
         <a routerLink="/home">
             <fa-icon class="back-btn" [icon]="faArrowLeft"></fa-icon>
         </a>
 
         <div class="header-title">
-
             <app-text weight="bold" size="lg">
-                {{user.username | username}}
+                {{user.username | uppercase}}
             </app-text>
-
             <app-text color="grey" size="sm">
                 {{tweets.length}} Tweets
             </app-text>
-
         </div>
-
     </header>
-
 </app-card>
 
 <app-card>
     <app-img
-        src="https://unsplash.it/600/200" variant="square"></app-img>
+        variant="square"
+        src="https://unsplash.it/600/200">
+    </app-img>
 </app-card>
 
 <app-card [relative]="true">
     <header class="profile-card-header">
-        <app-img size="lg" class="profile-img" src="https://unsplash.it/135/135" [border]="true">
-            
-        </app-img>
+        <app-img 
+            class="profile-img" 
+            size="lg"
+            src="https://unsplash.it/135/135"
+            [border]="true"></app-img>
 
-        <app-button variant="outline" *ngIf="isMyProfile; else toggleFollowBtn" (click)="openEditModal()">Edit Profile</app-button>
-        
-    <ng-template #toggleFollowBtn>
-        <app-button [variant]="isFollowing  ? 'primary' : 'outline'">
-            {{isFollowing ? 'Following': 'Follow'}}
+        <app-button 
+            variant="outline" 
+            *ngIf="isMyProfile; else toggleFollowBtn"
+            (click)="openEditModal()">
+            Edit
         </app-button>
-    </ng-template>
+
+        <ng-template #toggleFollowBtn>
+            <app-button 
+                [variant]="isFollowing ? 'primary' : 'outline'"
+                (click)="toggleFollow()">
+                {{isFollowing ? 'Following' : 'Follow'}}
+            </app-button>
+        </ng-template>
     </header>
-    
+
     <div class="profile-title">
         <app-text weight="bold" size="lg">
             {{user.username}}
@@ -53,69 +57,68 @@
 
     <div class="profile-bio">
         <app-text>
-            {{user.bio ? user.bio : 'I am a new account'}}
+            {{user.bio ? user.bio : 'I am new in twitter'}}
         </app-text>
     </div>
-    
+
     <div class="profile-info">
         <div class="info-item" *ngIf="user.location">
-            <fa-icon [icon]="faMapMarkerAlt" size="sm"></fa-icon>
+            <fa-icon [icon]="faMapMarkerAlt"></fa-icon>
             <app-text class="stats-item-title" color="grey" size="sm">
                 {{user.location}}
             </app-text>
         </div>
+
         <a [href]="user.link" target="_blank" rel="noreferrer" class="info-item" *ngIf="user.link">
-            <fa-icon  [icon]="faLink" size="sm"></fa-icon>
+            <fa-icon [icon]="faLink"></fa-icon>
             <app-text class="stats-item-title" color="grey" size="sm">
                 {{user.link.split('//')[1]}}
             </app-text>
         </a>
+
         <div class="info-item">
-            <fa-icon  [icon]="faCalenderAlt" size="sm"></fa-icon>
+            <fa-icon [icon]="faCalendarAlt"></fa-icon>
             <app-text class="stats-item-title" color="grey" size="sm">
-                Joined {{user.created_at | date}}
+                {{user.created_at | date}}
             </app-text>
         </div>
     </div>
 
     <div class="profile-statistics">
         <div class="stats-item">
-            <div class="stats-item-count">
-                <app-text weight="bold" size="sm">
-                    515
-                </app-text>
-            </div>
-                <app-text class="stats-item-title" color="grey" size="sm">
-                    Following
-                </app-text>
+            <app-text weight="bold" size="sm">
+                {{user.following ? user.following.length : 0}}
+            </app-text>
+            <app-text class="stats-item-title" color="grey" size="sm">
+                Following
+            </app-text>
         </div>
+
         <div class="stats-item">
-            <div class="stats-item-count">
-                <app-text weight="bold" size="sm">
-                    55
-                </app-text>
-            </div>
-                <app-text class="stats-item-title" color="grey" size="sm">
-                    Followers
-                </app-text>
+            <app-text weight="bold" size="sm">
+                {{user.followers ? user.followers.length : 0}}
+            </app-text>
+            <app-text class="stats-item-title" color="grey" size="sm">
+                Followers
+            </app-text>
         </div>
     </div>
 
-    <a href="#0" class="profile-followers">
+    <a href="#" class="profile-followers">
         <div class="followers-images-wrapper">
             <app-img 
-                *ngFor="let followerImage of followerImages; index as i"
-                class="follower-image" 
-                [ngStyle]="{transform: 'translateX(-'  + (50 * i) + '%)', 'z-index': (i * -1)}"
+                *ngFor="let followerImage of followersImages; index as i"
+                class="follower-image"
+                [ngStyle]="{transform: 'translateX(-' + (50 * i) + '%)', 'z-index': i * -1}"
                 size="sm" 
                 [src]="followerImage"></app-img>
-           
         </div>
 
         <div class="followers-text-wrapper">
-            <app-text color="grey" size="sm">Followed by Joe, Soap and 9 others.</app-text>
+            <app-text color="grey" size="sm">
+                {{followers | followers}}
+            </app-text>
         </div>
-
     </a>
 
     <app-tabs
@@ -123,8 +126,7 @@
         [tabs]="profileTabs"
         name="profileTabs"
         [selectedTab]="selectedProfileTab"
-        (select)="setProfileTab($event)">
-    </app-tabs>
+        (select)="setProfileTab($event)"></app-tabs>
 </app-card>
 
 <app-tweet-card
@@ -132,10 +134,10 @@
     [tweet]="tweet">
 </app-tweet-card>
 
-
 <app-modal [isOpen]="isEditModalOpen">
     <app-edit-form
-    *ngIf="userData && userData.id"
-    (onCancel)="closeEditModal()"
-    (onSuccess)="onSuccessfulEdit()"></app-edit-form>
+        *ngIf="userData && userData.id"
+        (onCancel)="closeEditModal()"
+        (onSuccess)="onSuccessfulEdit()">
+    </app-edit-form>
 </app-modal>

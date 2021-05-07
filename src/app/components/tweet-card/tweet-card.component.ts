@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {faChevronDown, faTimes} from '@fortawesome/free-solid-svg-icons';
 import {faHeart, faComment} from '@fortawesome/free-regular-svg-icons';
-import {environment as env} from 'src/environments/environment';
-import { TweetService } from 'src/app/services/tweet.service';
+import {faChevronDown, faTimes} from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/services/auth.service';
+import { TweetService } from 'src/app/services/tweet.service';
+import {environment as env} from 'src/environments/environment';
 
 @Component({
   selector: 'app-tweet-card',
@@ -12,39 +12,46 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class TweetCardComponent implements OnInit {
   @Input() size: string = 'md';
-  @Input() tweet: any;
   @Input() type: string = 'tweet';
-  faChevronDown = faChevronDown;
+  @Input() tweet: any;
   faTimes = faTimes;
-  faHeart = faHeart;
   faComment = faComment;
+  faHeart = faHeart;
+  faChevronDown = faChevronDown;
   isReplyModalOpen: boolean = false;
 
+  get tweetImg(): string {
+    if (!this.tweet.image) return null;
+
+    return `${env.baseURL}${this.tweet.image.url}`
+  }
+
+  get replyCount() {
+    if (!this.tweet.replies) return 0;
+
+    return this.tweet.replies.length;
+  }
+
+  get likeCount() {
+    if (!this.tweet.likes) return 0;
+
+    return this.tweet.likes.length;
+  }
+
   get profileImg() {
-    try{
-      const imgUrl =  this.tweet.user.profileImg.formats.thumbnail.url;
+    try {
+      const imgUrl = this.tweet.user.profileImg.formats.thumbnail.url;
 
       return `${env.baseURL}${imgUrl}`;
     } catch {
       return env.placeholderProfileImg;
     }
-
   }
 
-  get replyCount() {
-    if(!this.tweet.replies) return 0;
-    return this.tweet.replies.length;
-  }
-
-  get likeCount() {
-    if(!this.tweet.likes) return 0;
-    return this.tweet.likes.length;
-  }
-  
   get user() {
     return this.authService.user;
   }
-  
+
   constructor(
     private tweetService: TweetService,
     private authService: AuthService
@@ -53,28 +60,27 @@ export class TweetCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  
   closeReplyModal() {
     this.isReplyModalOpen = false;
   }
 
   replyTweet(event) {
     event.stopPropagation();
-    if(this.type === 'reply') return;
-    
+    if (this.type === 'reply') return;
+
     this.isReplyModalOpen = true;
   }
 
   likeTweet(event) {
     event.stopPropagation();
-    if(this.type ==='reply') return;
+    if (this.type === 'reply') return;
 
     const isLikedByMe = this.tweet.likes.find(like => like.user === this.user.id);
 
     if (isLikedByMe) {
-      this.tweetService.disLikeTweet(isLikedByMe.id);
+      this.tweetService.dislikeTweet(isLikedByMe.id);
     } else {
-      this.tweetService.likeTweet(this.tweet.id)
+      this.tweetService.likeTweet(this.tweet.id);
     }
   }
 

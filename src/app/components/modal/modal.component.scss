@@ -1,7 +1,7 @@
 @import 'src/assets/styles/_theme.scss';
 
 .overlay {
-    background-color:rgba($overlay, 0.4);
+    background-color: rgba($overlay, 0.4);
     position: fixed;
     top: 0;
     left: 0;
@@ -9,7 +9,6 @@
     height: 100vh;
     z-index: $z-9999;
 }
-
 .modal {
     margin: $xl-space auto;
     max-width: 600px;

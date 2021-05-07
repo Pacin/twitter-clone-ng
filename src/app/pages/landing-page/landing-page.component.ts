@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faTwitter } from '@fortawesome/free-brands-svg-icons';
+import {faTwitter} from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-landing-page',
@@ -7,10 +7,9 @@ import { faTwitter } from '@fortawesome/free-brands-svg-icons';
   styleUrls: ['./landing-page.component.scss']
 })
 export class LandingPageComponent implements OnInit {
-faTwitter = faTwitter;
-
-isSignupModalOpen: boolean =false;
-isLoginModalOpen: boolean =false;
+  faTwitter = faTwitter;
+  isSignupModalOpen: boolean = false;
+  isLoginModalOpen: boolean = false;
 
   constructor() { }
 

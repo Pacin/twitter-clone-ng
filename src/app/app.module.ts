@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,13 +27,15 @@ import { TweetInputComponent } from './components/tweet-input/tweet-input.compon
 import { SignUpFormComponent } from './pages/sign-up-form/sign-up-form.component';
 import { LogInFormComponent } from './pages/log-in-form/log-in-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { TweetDetailsPageComponent } from './pages/tweet-details-page/tweet-details-page.component';
 import { EditFormComponent } from './components/edit-form/edit-form.component';
 import { DropdownLinkComponent } from './components/ui/dropdown-link/dropdown-link.component';
 import { AuthGuard } from './guards/auth.guard';
 import { PublicGuard } from './guards/public.guard';
 import { UsernamePipe } from './pipes/username.pipe';
+import { RecommendedUsersComponent } from './components/recommended-users/recommended-users.component';
+import { FollowersPipe } from './pipes/followers.pipe';
 
 @NgModule({
   declarations: [
@@ -63,7 +65,9 @@ import { UsernamePipe } from './pipes/username.pipe';
     TweetDetailsPageComponent,
     EditFormComponent,
     DropdownLinkComponent,
-    UsernamePipe
+    UsernamePipe,
+    RecommendedUsersComponent,
+    FollowersPipe
   ],
   imports: [
     BrowserModule,
