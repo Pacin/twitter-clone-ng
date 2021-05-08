@@ -27,14 +27,14 @@
         <app-img 
             class="profile-img" 
             size="lg"
-            src="https://unsplash.it/135/135"
+            [src]="profileImg"
             [border]="true"></app-img>
 
         <app-button 
             variant="outline" 
             *ngIf="isMyProfile; else toggleFollowBtn"
             (click)="openEditModal()">
-            Edit
+            Edit Profile
         </app-button>
 
         <ng-template #toggleFollowBtn>
@@ -109,7 +109,6 @@
             <app-img 
                 *ngFor="let followerImage of followersImages; index as i"
                 class="follower-image"
-                [ngStyle]="{transform: 'translateX(-' + (50 * i) + '%)', 'z-index': i * -1}"
                 size="sm" 
                 [src]="followerImage"></app-img>
         </div>

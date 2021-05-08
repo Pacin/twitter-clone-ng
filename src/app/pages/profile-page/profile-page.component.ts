@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {faArrowLeft, faMapMarkerAlt, faLink, faCalendarAlt} from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/services/auth.service';
+import { extractProfileImg } from 'src/app/shared/utils';
 import {environment as env} from 'src/environments/environment';
 
 @Component({
@@ -28,14 +29,16 @@ export class ProfilePageComponent implements OnInit {
   selectedProfileTab: string = 't';
 
   get followersImages() {
-    return this.followers.map(follow => {
-      if (follow.follower.profileImg) {
-        return `${env.baseURL}${follow.follower.profileImg.formats.thumbnail.url}`;
-      }
-
-      return env.placeholderProfileImg;
+    return this.followers
+    .filter((follow, index) => index < 3)
+    .map(follow => {return extractProfileImg(follow.follower);  
     })
   }
+
+  get profileImg() {
+    return extractProfileImg(this.user);
+  }
+
 
   get isMyProfile() {
     return this.user.id === this.authService.user.id;

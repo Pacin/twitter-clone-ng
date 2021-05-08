@@ -84,4 +84,14 @@ export class TweetService {
       }
     })
   }
+  
+  deleteTweet(tweetId:number) {
+    this.http.delete(`${env.baseURL}/tweets/${tweetId}`, {
+      headers: {
+        Authorization: `Bearer ${this.authService.jwt}`
+      }
+    }).subscribe((data:any)=> {
+        this.fetchTweets();
+    })
+  }
 }

@@ -1,5 +1,5 @@
-<a [routerLink]="'/home/tweets/' + tweet.id">
-    <app-card>
+<a class="tweet-card" [routerLink]="'/home/tweets/' + tweet.id">
+    <app-card [relative]="true">
         <div class="feed-item-wrapper">
             <div class="item-left">
                 <a [routerLink]="'/home/' + tweet.user.id">
@@ -23,8 +23,15 @@
                             · {{tweet.created_at | date : 'shortTime'}}
                         </app-text>
                     </div>
-    
-                    <fa-icon class="header-down-icon" [icon]="faChevronDown"></fa-icon>
+                    <app-dropdown-link
+                    *ngIf="isOwner"
+                    class="menu-btn"
+                    [icon]="faEllipsisH"
+                    [fab]="true"
+                    [menuItems]="menuItems"
+                    direction="down">
+
+                    </app-dropdown-link>
                 </header>
     
                 <div class="content-body">
@@ -33,12 +40,12 @@
                     </app-text>
                 </div>
 
-                <div class="image-wrapper" *ngIf="tweetImg">
+                <a href="#" (click)="openImgModal($event); false" class="image-wrapper" *ngIf="tweetImg">
                     <app-img
                         variant="square"
                         [src]="tweetImg">
                     </app-img>
-                </div>
+                </a>
     
                 <div class="content-actions">
                     <div class="action-wrapper">
@@ -78,7 +85,24 @@
     </app-card>
 </a>
 
-<app-modal [isOpen]="isReplyModalOpen">
+
+<app-modal [isOpen]="isImgModalOpen" (onClose)="closeImgModal()">
+    <app-button 
+    class="img-modal-close-btn" 
+    [icon]="true"
+    (click)="closeImgModal()"
+    variant="flat">
+        <fa-icon [icon]="faTimes"></fa-icon>
+    </app-button>
+    <div class="modal-image-wrapper">    
+        <app-img
+            variant="square"
+            [src]="tweetImg">
+        </app-img>
+    </div>
+</app-modal>
+
+<app-modal [isOpen]="isReplyModalOpen" (onClose)="closeReplyModal()">
     <header class="modal-header">
         <app-button (click)="closeReplyModal()" variant="flat" [icon]="true">
             <fa-icon [icon]="faTimes"></fa-icon>

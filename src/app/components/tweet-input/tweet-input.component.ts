@@ -2,7 +2,9 @@ import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import {faImage, faCalendarAlt, faSmile, faChartBar, faFileImage} from '@fortawesome/free-regular-svg-icons';
 import {faGlobeAmericas, faTimes} from '@fortawesome/free-solid-svg-icons';
+import { AuthService } from 'src/app/services/auth.service';
 import { TweetService } from 'src/app/services/tweet.service';
+import {environment as env} from 'src/environments/environment';
 
 
 @Component({
@@ -14,7 +16,7 @@ export class TweetInputComponent implements OnInit {
   @Input() rows: string = '5';
   @Input() parentTweet: any;
   @ViewChild('imgInput') imgInput: ElementRef;
-  selectedImgUrl: any;
+  selectedImgUrl: string | ArrayBuffer;
   faGlobeAmericas = faGlobeAmericas;
   faTimes = faTimes;
   modalActions = [
@@ -28,8 +30,15 @@ export class TweetInputComponent implements OnInit {
   isLoading: boolean = false;
 
   constructor(
-    private tweetService: TweetService
+    private tweetService: TweetService,
+    private authService: AuthService
   ) { }
+
+
+  get profileImg() {
+    return this.authService.profileImg;
+  }
+
 
   ngOnInit(): void {
   }

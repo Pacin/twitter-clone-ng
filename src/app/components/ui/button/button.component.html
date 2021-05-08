@@ -2,7 +2,8 @@
     class="btn"
     [class]="dynamicClasses"
     [ngClass]="{block: block, icon: icon}"
-    [disabled]="isLoading">
+    [disabled]="isLoading"
+    [type]="type">
     <ng-content *ngIf="!isLoading; else loading"></ng-content>
 </button>
 

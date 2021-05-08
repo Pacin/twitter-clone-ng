@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {faHeart, faComment} from '@fortawesome/free-regular-svg-icons';
-import {faChevronDown, faTimes} from '@fortawesome/free-solid-svg-icons';
+import {faHeart, faComment, faTrashAlt} from '@fortawesome/free-regular-svg-icons';
+import { faEllipsisH, faTimes} from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/services/auth.service';
 import { TweetService } from 'src/app/services/tweet.service';
+import { extractProfileImg } from 'src/app/shared/utils';
 import {environment as env} from 'src/environments/environment';
 
 @Component({
@@ -17,13 +18,24 @@ export class TweetCardComponent implements OnInit {
   faTimes = faTimes;
   faComment = faComment;
   faHeart = faHeart;
-  faChevronDown = faChevronDown;
+  faEllipsisH = faEllipsisH;
+  faTrash = faTrashAlt;
   isReplyModalOpen: boolean = false;
-
+  isImgModalOpen:boolean = false;
+  menuItems: any[] = [
+    {text:'Delete', icon:this.faTrash, callback: () => this.deleteTweet()}
+  ]
   get tweetImg(): string {
     if (!this.tweet.image) return null;
 
     return `${env.baseURL}${this.tweet.image.url}`
+  }
+
+  get isOwner(): boolean {
+    const userId = this.authService.user.id;
+    const tweetUser = this.tweet.user.id;
+
+    return userId === tweetUser;
   }
 
   get replyCount() {
@@ -39,13 +51,7 @@ export class TweetCardComponent implements OnInit {
   }
 
   get profileImg() {
-    try {
-      const imgUrl = this.tweet.user.profileImg.formats.thumbnail.url;
-
-      return `${env.baseURL}${imgUrl}`;
-    } catch {
-      return env.placeholderProfileImg;
-    }
+    return extractProfileImg(this.tweet.user);
   }
 
   get user() {
@@ -84,4 +90,16 @@ export class TweetCardComponent implements OnInit {
     }
   }
 
+  openImgModal(event) {
+    event.stopPropagation();
+    this.isImgModalOpen = true;
+  }
+
+  closeImgModal() {
+    this.isImgModalOpen= false;
+  }
+
+  deleteTweet() {
+  this.tweetService.deleteTweet(this.tweet.id);
+  }
 }
