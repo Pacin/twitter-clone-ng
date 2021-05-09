@@ -1,24 +1,47 @@
 @import 'src/assets/styles/_theme.scss';
+@import 'src/assets/styles/_mixins.scss';
 
 .home-page-wrapper {
     display: flex;
+    @include bp(tablet){
+        justify-content: center;
+    }
 }
 
 .left-menu-wrapper {
     flex-basis: 210px;
+    transition: $transition;
+    @include bp(tablet) {
+        flex-basis: 50px;
+    }
+    @include bp(mobile) {
+        display: none;
+    }
 }
 
 .main-content-wrapper {
     flex: 1;
     margin: 0 $xl-space 0 $xxl-space;
+    @include bp(tablet) {
+        margin:0 $md-space 0 $xxl-space;
+        max-width: 565px;
+    }
+    @include bp(mobile) {
+        margin:0;
+        width: 100%;
+    }
 }
 
 .aside-content-wrapper {
-    flex-basis: 345px;
     padding-top: $sm-space;
+    transition: $transition;
 
     .img-grid {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @include bp(tablet) {
+        display: none;
     }
 }

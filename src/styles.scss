@@ -1,4 +1,6 @@
 @import 'src/assets/styles/_theme.scss';
+@import 'src/assets/styles/_mixins.scss';
+
 
 *, *::after, *::before {
     margin: 0;
@@ -15,6 +17,10 @@ body {
 .container {
     max-width: 1200px;
     margin: auto;
+    @include bp(tablet) {
+        max-width: 900px;
+        margin: 0 auto;
+    }
 }
 
 hr {

@@ -1,22 +1,29 @@
-<app-card>
-    <header class="feed-header">
-        <app-text weight="bold" size="lg">
-            Homepage
-        </app-text>
+<div class="feed-page-wrapper">
+    <app-card class="feed-header-wrapper">
+        <header class="feed-header">
+            <app-text weight="bold" size="lg">
+                Homepage
+            </app-text>
+        
+            <fa-icon class="header-icon" [icon]="faJediOrder"></fa-icon>
+        </header>
+    </app-card>
     
-        <fa-icon class="header-icon" [icon]="faJediOrder"></fa-icon>
-    </header>
-</app-card>
+    <app-card class="feed-tweet-area" [padding]="true">
+        <app-tweet-input rows="2"></app-tweet-input>
+    </app-card>
+    
+    <app-divider size="lg"></app-divider>
+    
+    <div class="feed-list">
+        <app-tweet-card
+            *ngFor="let tweet of tweets"
+            [tweet]="tweet">
+        </app-tweet-card>
+    </div>
 
-<app-card [padding]="true">
-    <app-tweet-input rows="2"></app-tweet-input>
-</app-card>
-
-<app-divider size="lg"></app-divider>
-
-<div class="feed-list">
-    <app-tweet-card
-        *ngFor="let tweet of tweets"
-        [tweet]="tweet">
-    </app-tweet-card>
+    <app-button class="tweet-mobile-btn" [rounded]="true" size="lg" [icon]="true">
+        <fa-icon [icon]="faPlus"></fa-icon>
+    </app-button>
 </div>
+

@@ -24,10 +24,6 @@
 
             .header-title-wrapper {
                 display: flex;
-
-                app-text {
-                    margin-right: $xs-space;
-                }
             }
 
             .header-down-icon {
@@ -83,6 +79,6 @@
 
 .menu-btn {
     position: absolute;
-    top: $md-space;
+    top: 0;
     right: $md-space;
 }

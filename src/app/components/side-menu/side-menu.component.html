@@ -1,41 +1,44 @@
+<div class="side-menu-wrapper">
 <app-nav-link [icon]="faTwitter" to="/home">
 </app-nav-link>
 
 <app-nav-link [icon]="faHome" to="/home">
-    Home
+    <span class="side-menu-text">Home</span>
 </app-nav-link>
 
 <app-nav-link [icon]="faHashtag" to="/home/1">
-    Explore
+    <span class="side-menu-text">Explore</span>
 </app-nav-link>
 
 <app-nav-link [icon]="faBell" to="/home/1">
-    Notifications
+    <span class="side-menu-text">Notifications</span>
 </app-nav-link>
 
 <app-nav-link [icon]="faEnvelope" to="/home/1">
-    Messages
+    <span class="side-menu-text">Messages</span>
 </app-nav-link>
 
 <app-nav-link [icon]="faBookmark" to="/home/1">
-    Bookmarks
+    <span class="side-menu-text">Bookmarks</span>
 </app-nav-link>
 
 <app-nav-link [icon]="faListAlt" to="/home/1">
-    Lists
+    <span class="side-menu-text">Lists</span>
 </app-nav-link>
 
 <app-nav-link [icon]="faUser" [to]="'/home/' + user.id">
-    Profile
+    <span class="side-menu-text">Profile</span>
 </app-nav-link>
 
 <app-dropdown-link [icon]="faEllipsisH" [menuItems]="moreMenuItems">
-    More
+    <span class="side-menu-text">More</span>
 </app-dropdown-link>
 
-<app-button [block]="true" to="/home/1" (click)="toggleTweetModal()">
-    Tweet
-</app-button>
+<app-button class="side-menu-tweet"
+    [block]="true"
+     to="/home/1" (click)="toggleTweetModal()">
+    <span class="side-menu-text">Tweet</span>
+</app-button></div>
 
 <app-modal [isOpen]="isTweetModalOpen">
     <header class="modal-header">

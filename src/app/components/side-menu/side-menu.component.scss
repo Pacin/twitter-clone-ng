@@ -1,4 +1,5 @@
 @import 'src/assets/styles/_theme.scss';
+@import 'src/assets/styles/_mixins.scss';
 
 .modal-header {
     padding: $md-space $lg-space;
@@ -6,4 +7,20 @@
 .modal-content {
     padding: $md-space $lg-space;
     display: flex;
+}
+
+.side-menu-wrapper {
+    @include bp(tablet){
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.side-menu-text {
+    @include bp(tablet) {
+        display: none;
+    }
 }

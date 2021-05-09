@@ -1,4 +1,9 @@
 @import 'src/assets/styles/_theme.scss';
+@import 'src/assets/styles/_mixins.scss';
+
+.feed-page-wrapper {
+    position: relative;
+}
 
 .feed-header {
     display: flex;
@@ -9,5 +14,22 @@
     .header-icon {
         color: $blue;
         font-size: $xl-font;
+    }
+}
+
+.feed-tweet-area {
+    @include bp(mobile-small) {
+        display: none;
+    }
+}
+
+.tweet-mobile-btn {
+    position: fixed;
+    bottom:$xxxl-space;
+    right: $lg-space;
+    display: none;
+    border-radius: 50%;
+    @include bp(mobile){
+        display: flex;
     }
 }
