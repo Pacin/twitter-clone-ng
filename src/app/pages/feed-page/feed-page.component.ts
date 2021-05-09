@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {faJediOrder} from '@fortawesome/free-brands-svg-icons';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { TweetService } from 'src/app/services/tweet.service';
 
 
@@ -12,6 +12,8 @@ import { TweetService } from 'src/app/services/tweet.service';
 export class FeedPageComponent implements OnInit {
   faJediOrder = faJediOrder;
   faPlus = faPlus;
+  faTimes = faTimes;
+  isTweetModalOpen: boolean = false;
   
   get tweets() {
     return this.tweetService.feed;
@@ -25,4 +27,7 @@ export class FeedPageComponent implements OnInit {
     this.tweetService.fetchTweets();
   }
 
+  toggleTweetModal() {
+    this.isTweetModalOpen = !this.isTweetModalOpen;
+  }
 }

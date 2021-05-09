@@ -22,8 +22,23 @@
         </app-tweet-card>
     </div>
 
-    <app-button class="tweet-mobile-btn" [rounded]="true" size="lg" [icon]="true">
+    <app-button class="tweet-mobile-btn" [rounded]="true" size="lg" [icon]="true" (click)="toggleTweetModal()">
         <fa-icon [icon]="faPlus"></fa-icon>
     </app-button>
 </div>
+
+<app-modal class="modal-wrapper" [isOpen]="isTweetModalOpen">
+    <header class="modal-header">
+        <app-button (click)="toggleTweetModal()" variant="flat" [icon]="true">
+            <fa-icon [icon]="faTimes"></fa-icon>
+        </app-button>
+    </header>
+
+    <app-divider></app-divider>
+    
+    <div class="modal-content">
+        <app-tweet-input></app-tweet-input>
+    </div>
+</app-modal>
+
 

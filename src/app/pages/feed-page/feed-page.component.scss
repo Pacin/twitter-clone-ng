@@ -29,7 +29,13 @@
     right: $lg-space;
     display: none;
     border-radius: 50%;
-    @include bp(mobile){
+    @include bp(mobile-small){
         display: flex;
+    }
+}
+
+.modal {
+    @include bp(mobile-small) {
+        min-height: 100vh;
     }
 }

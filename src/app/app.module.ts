@@ -36,6 +36,7 @@ import { PublicGuard } from './guards/public.guard';
 import { UsernamePipe } from './pipes/username.pipe';
 import { RecommendedUsersComponent } from './components/recommended-users/recommended-users.component';
 import { FollowersPipe } from './pipes/followers.pipe';
+import { MobileFooterComponent } from './components/mobile-footer/mobile-footer.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { FollowersPipe } from './pipes/followers.pipe';
     DropdownLinkComponent,
     UsernamePipe,
     RecommendedUsersComponent,
-    FollowersPipe
+    FollowersPipe,
+    MobileFooterComponent
   ],
   imports: [
     BrowserModule,

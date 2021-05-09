@@ -14,7 +14,7 @@
     @include bp(tablet) {
         flex-basis: 50px;
     }
-    @include bp(mobile) {
+    @include bp(mobile-small) {
         display: none;
     }
 }
@@ -43,5 +43,12 @@
 
     @include bp(tablet) {
         display: none;
+    }
+}
+
+.footer-wrapper {
+    display: none;
+    @include bp(mobile-small) {
+        display: block;
     }
 }

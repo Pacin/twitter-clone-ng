@@ -37,7 +37,9 @@
 <app-button 
     class="side-menu-tweet"
     [block]="!isMobile"
-     to="/home/1" (click)="toggleTweetModal()">
+    [icon]="isTablet"
+    to="/home/1" (click)="toggleTweetModal()">
+    <fa-icon class="side-menu-icon" [icon]="faPlus"></fa-icon>
     <span class="side-menu-text">Tweet</span>
 </app-button></div>
 

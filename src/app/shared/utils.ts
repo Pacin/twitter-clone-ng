@@ -15,3 +15,9 @@ export const extractProfileImg = (user: any):string => {
 
     return windowWidth <= 768;
   }
+  
+  export const isTablet = ():boolean  => {
+    const windowWidth = window.innerWidth;
+
+    return windowWidth <= 991;
+  }

@@ -1,4 +1,5 @@
 @import 'src/assets/styles/_theme.scss';
+@import 'src/assets/styles/_mixins.scss';
 
 .dropdown {
     border: none;
@@ -28,6 +29,9 @@
 
     .dropdown-text {
         margin-left: $lg-space;
+        @include bp(tablet) {
+            display: none;
+        }
     }
 
     &:hover {

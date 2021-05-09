@@ -23,4 +23,11 @@
     @include bp(tablet) {
         display: none;
     }
+
+.side-menu-icon{
+    display: none;
+    @include bp(tablet){
+        display: inline-block;
+    }
+}
 }
