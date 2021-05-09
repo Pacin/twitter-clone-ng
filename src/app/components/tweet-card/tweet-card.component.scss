@@ -52,6 +52,14 @@
             .action-icon {
                 color: $grey;
                 margin-right: $xs-space;
+
+                &.green {
+                    color:$green;
+                }
+
+                &.red {
+                    color:$red;
+                }
             }
         }
     }

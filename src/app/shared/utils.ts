@@ -9,3 +9,9 @@ export const extractProfileImg = (user: any):string => {
       return env.placeholderProfileImg;
     }
   }
+
+  export const isMobile = ():boolean  => {
+    const windowWidth = window.innerWidth;
+
+    return windowWidth <= 768;
+  }

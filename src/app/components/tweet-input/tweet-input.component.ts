@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import {faImage, faCalendarAlt, faSmile, faChartBar, faFileImage} from '@fortawesome/free-regular-svg-icons';
 import {faGlobeAmericas, faTimes} from '@fortawesome/free-solid-svg-icons';
@@ -15,6 +15,8 @@ import {environment as env} from 'src/environments/environment';
 export class TweetInputComponent implements OnInit {
   @Input() rows: string = '5';
   @Input() parentTweet: any;
+  @Input() type:string = 'tweet'; // 'reply' | 'retweet'
+  @Output() onSuccess = new EventEmitter();
   @ViewChild('imgInput') imgInput: ElementRef;
   selectedImgUrl: string | ArrayBuffer;
   faGlobeAmericas = faGlobeAmericas;
@@ -56,23 +58,40 @@ export class TweetInputComponent implements OnInit {
       return this.tweetService.uploadImage(formData)
         .subscribe(data => {
           const imgId = data[0].id;
+          const newTweet:any = {
+            text: this.tweetText.value,
+            imgId
+          }
 
-          this.tweetService.sendTweet(this.tweetText.value, imgId)
+          if(this.parentTweet && this.type === 'retweet') {
+            newTweet.originalTweet = this.parentTweet.id;
+          }
+
+          this.tweetService.sendTweet(newTweet)
             .subscribe(data => {
               this.tweetService.fetchTweets();
               this.tweetText.reset();
               this.imgInput.nativeElement.value = '';
               this.selectedImgUrl = null;
               this.isLoading = false;
+              this.onSuccess.emit();
             })
         })
     }
 
-    this.tweetService.sendTweet(this.tweetText.value)
+    const newTweet:any= {
+      text: this.tweetText.value,
+    }
+    if(this.parentTweet && this.type === 'retweet') {
+      newTweet.originalTweet = this.parentTweet.id
+    }
+
+    this.tweetService.sendTweet(newTweet)
       .subscribe(data => {
         this.tweetService.fetchTweets();
         this.tweetText.reset();
         this.isLoading = false;
+        this.onSuccess.emit();
       })
   }
 
@@ -123,5 +142,4 @@ export class TweetInputComponent implements OnInit {
   addDate() {
     
   }
-
 }

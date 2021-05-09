@@ -34,8 +34,9 @@
     <span class="side-menu-text">More</span>
 </app-dropdown-link>
 
-<app-button class="side-menu-tweet"
-    [block]="true"
+<app-button 
+    class="side-menu-tweet"
+    [block]="!isMobile"
      to="/home/1" (click)="toggleTweetModal()">
     <span class="side-menu-text">Tweet</span>
 </app-button></div>

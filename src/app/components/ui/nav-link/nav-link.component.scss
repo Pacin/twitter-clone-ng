@@ -11,14 +11,19 @@
     font-weight: $bold;
     margin: $lg-space 0;
 
+
+
     .link-box {
         padding: $sm-space $lg-space;
         transition: $transition;
+
         @include bp(tablet) {
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: $sm-space $sm-space;
+            padding: $md-space $lg-space;
+            height: 50px;
+            width: 50px;
         }
 
         &.ng-fa-icon{
@@ -32,6 +37,10 @@
 
     .link-text {
         margin-left: $lg-space;
+
+        @include bp(tablet) {
+            margin-left: 0;
+        }
     }
 
     &:hover {

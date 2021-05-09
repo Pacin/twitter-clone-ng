@@ -4,6 +4,7 @@ import {faTwitter} from '@fortawesome/free-brands-svg-icons';
 import {faBell, faEnvelope, faBookmark, faListAlt, faUser} from '@fortawesome/free-regular-svg-icons';
 import {faHome, faHashtag, faEllipsisH, faTimes, faSignOutAlt} from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/services/auth.service';
+import {isMobile} from 'src/app/shared/utils';
 
 @Component({
   selector: 'app-side-menu',
@@ -28,6 +29,10 @@ export class SideMenuComponent implements OnInit {
 
   get user() {
     return this.authService.user || {};
+  }
+
+  get isMobile() {
+    return isMobile();
   }
 
   constructor(

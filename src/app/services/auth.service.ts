@@ -100,4 +100,9 @@ export class AuthService {
       }).subscribe(data => this.fetchUser(this.user.id));
     }
   }
+
+
+  fetchUserDetails(userId:number) {
+    return this.http.get(`${env.baseURL}/users/${userId}`);
+  }
 }

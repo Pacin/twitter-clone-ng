@@ -79,8 +79,8 @@
                 <ng-template #replyBtn>
                     <app-button 
                         [isLoading]="isLoading"
-                        (click)="replyTweet()">
-                        Reply
+                        (click)="type === 'reply' ? replyTweet() : sendTweet()">
+                        {{type === 'reply'? 'Reply' : 'Retweet'}}
                     </app-button>
                 </ng-template>
             </div>
