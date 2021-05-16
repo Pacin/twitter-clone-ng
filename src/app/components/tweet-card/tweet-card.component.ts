@@ -43,10 +43,12 @@ export class TweetCardComponent implements OnInit {
   }
 
   get isRetweetedByMe():boolean {
+    if (this.type === 'reply') return false;
     return !!this.tweet.retweets.find(retweet => retweet.user === this.user.id);
   }
   
   get isLikedByMe():boolean {
+    if (this.type === 'reply') return false;
     return !!this.tweet.likes.find(like => like.user === this.user.id);
   }
 
@@ -141,6 +143,8 @@ export class TweetCardComponent implements OnInit {
 
   undoRetweet(event) {
     event.stopPropagation();
+
+    if(this.type === 'reply') return;
     
 
     const retweet =  this.tweet.retweets.find(retweet => retweet.user === this.user.id);

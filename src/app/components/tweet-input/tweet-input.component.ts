@@ -57,10 +57,10 @@ export class TweetInputComponent implements OnInit {
 
       return this.tweetService.uploadImage(formData)
         .subscribe(data => {
-          const imgId = data[0].id;
+          const image = data[0].id;
           const newTweet:any = {
             text: this.tweetText.value,
-            imgId
+            image
           }
 
           if(this.parentTweet && this.type === 'retweet') {

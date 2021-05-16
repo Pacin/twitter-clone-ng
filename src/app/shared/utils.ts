@@ -21,3 +21,11 @@ export const extractProfileImg = (user: any):string => {
 
     return windowWidth <= 991;
   }
+
+  export const queryMultiData = (arr: any[],fieldName:string,  queryParam = 'id') => {
+    return arr.reduce((totalString:string, item:any, index: number) => {
+      const isLastItem = index === arr.length - 1; 
+
+     return `${totalString}${queryParam}_in=${item[fieldName]}${isLastItem ? '' : '&&'}`
+    }, '');
+  }

@@ -130,6 +130,7 @@
 
 <app-tweet-card
     *ngFor="let tweet of tweets"
+    [type]="tweet.likes ? 'tweet' : 'reply'"
     [tweet]="tweet">
 </app-tweet-card>
 
